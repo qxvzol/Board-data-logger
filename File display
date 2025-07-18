@@ -1,0 +1,36 @@
+import tkinter as tk
+from tkinter import ttk
+from tkinter import filedialog as fd
+from tkinter.messagebox import showinfo
+
+# create the root window
+root_file = tk.Toplevel()
+root_file.title('Tkinter Open File Dialog')
+root_file.geometry('300x150')
+
+#Define function for opening file button
+def select_file():
+    filetypes = (
+        ('text files', '*.txt'),
+        ('All files', '*.*')
+    )
+    filename = fd.askopenfilename(
+        title='Open a file',
+        initialdir='/',
+        filetypes=filetypes)
+    
+    print(filename)
+
+
+# open button
+open_button = ttk.Button(
+    root_file,
+    text='Open a File',
+    command=select_file
+)
+
+open_button.pack()
+
+
+# run the application
+root_file.mainloop()
